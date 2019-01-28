@@ -1,0 +1,118 @@
+html,body,.wrapper-box{
+        width:100%;
+        height:100%;
+        background: rgb(0, 0, 0);
+        font-family: "微软雅黑";
+}
+/* 旋转书的父级 */
+.wrapper-box{
+        background: url('img/background.png') no-repeat;
+        
+}
+.wrapper{
+        cursor: pointer;
+        position: relative;
+        top: 150px;
+        left: 350px;
+        width: 336px;
+        height: 393px;
+        box-shadow: inset 335px 19px 89px  rgb(29, 29, 29), 52px 11px 74px rgb(29, 29, 29);
+        transition: transform 0.8s linear,box-shadow 0.5s linear;
+        background: #ccc;
+        /* display: flex;
+        align-items: center;
+        justify-content: center; */
+}
+.wrapper:hover{
+        /* 这块的阴影是： 书旋转的时候的内阴影动画*/
+        transition: box-shadow 1s linear 1.5s,transform 1s linear 1s;
+        transform: rotateZ(-5deg) scale(1.2);
+        box-shadow: inset 24px 2px 72px  rgb(29, 29, 29);
+}
+.wrapper::before{
+        content: '';
+        width: 336px;
+        height: 15px;
+        background: rgb(163, 163, 162);
+        position: absolute;
+        top:-15px;
+        left: 0px;
+        transform-origin: bottom;
+        transform: skewX(-45deg);
+        box-shadow: inset 3px -5px 25px rgb(44, 44, 44);
+}
+.wrapper::after{
+        content: '';
+        width: 15px;
+        height: 393px;
+        background: rgb(255, 255, 255);
+        box-shadow: inset 4px -135px 95px rgba(44, 44, 44,0.6);
+        position: absolute;
+        top: 0px;
+        right: -15px;
+        transform: skewY(-45deg);
+        transform-origin: left;
+}
+.wrapper  .book-box{
+        position: absolute;
+        top: 0px ;
+        left: 0px;
+        width: 336px;
+        height: 393px;
+        background: rgb(0, 0, 0);
+        box-shadow: inset 1px 3px 4px 5px rgb(15, 0, 0);
+        transition: all 1.5s;
+}
+/* 鼠标碰到wrapper，封面翻转 */
+.wrapper:hover .book-box{
+        transition: transform 1s linear 1.5s;
+        transform-origin: left;
+        transform: rotateY(135deg);
+}
+.wrapper  .book-box .book{
+        width: 100%;
+        height: 100%;
+}
+.wrapper  .book-box .book-reverse{
+        position: absolute;
+        top: 0;
+        left:0;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        /* display: none; */
+        transition: opacity 1s linear;
+        /* z-index: -1; */
+       
+}
+/* 鼠标碰到wrapper，封面的底显示 */
+.wrapper:hover .book-box .book-reverse{
+        transition: opacity 4s linear;
+        opacity: 1;
+        box-shadow: 129px 1px 328px rgb(17, 17, 17) inset;
+        background: rgb(241, 241, 241);
+        /* display: block; */
+}
+.wrapper .writing{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate3d(-50%,-50%,0);
+        width: 80%;
+        height: 80%;
+        /* background: rgb(183, 184, 182); */
+        z-index: -1;
+        
+}
+/* 书顶部的内阴影 */
+.wrapper .book-box .book-top-shadow{
+        position: absolute;
+        width:100%;
+        height: 100%;
+        box-shadow:  inset 5px -14px 173px 112px rgba(29, 29, 29,0.6);
+        
+}
+.wrapper:hover .book-box .book-top-shadow{
+        transition: box-shadow 0.3s linear;
+        box-shadow: none;
+}
